@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // console.log('Sending request to server...');
-            const response = await fetch('https://hangryboi-resume-analysis-ai.hf.space/api/enhance-resume', {
+            const response = await fetch('https://hangryboi-resume-analysis-ai.hf.space/api/analyze-resume', {
                 method: 'POST',
                 body: formData,
                 headers: {
