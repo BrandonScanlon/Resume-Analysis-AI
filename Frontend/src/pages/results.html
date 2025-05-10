@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Optimized Resume</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      color: #333;
+    }
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 10px;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+      margin-top: 20px;
+    }
+    .analysis-section {
+      flex: 1;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      max-height: 800px;
+      overflow-y: auto;
+    }
+    .pdf-preview {
+      flex: 2;
+      background: #f9f9f9;
+      padding: 20px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      height: 800px;
+      display: flex;
+      flex-direction: column;
+    }
+    .pdf-preview h2 {
+      margin-top: 0;
+    }
+    #pdfViewer {
+      flex: 1;
+      width: 100%;
+      border: none;
+      background: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .button-group {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    button {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: #2980b9;
+    }
+    #downloadBtn {
+      background: #27ae60;
+    }
+    #downloadBtn:hover {
+      background: #219653;
+    }
+    .error {
+      color: #e74c3c;
+      padding: 10px;
+      background: #fadbd8;
+      border-radius: 5px;
+    }
+    pre {
+      white-space: pre-wrap;
+      font-family: inherit;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <h1>Optimized Resume</h1>
+  <div id="errorContainer" class="error" style="display: none;"></div>
+  
+  <div class="container">
+    <div class="analysis-section">
+      <h2>Analysis Results</h2>
+      <pre id="analysisOutput"></pre>
+    </div>
+    
+    <div class="pdf-preview">
+      <h2>Resume Preview</h2>
+      <iframe id="pdfViewer" src=""></iframe>
+    </div>
+  </div>
+  
+  <div class="button-group">
+    <button id="downloadBtn">Download PDF</button>
+    <button onclick="window.location.href='/'">Try Another</button>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const analysisOutput = document.getElementById('analysisOutput');
+      const pdfViewer = document.getElementById('pdfViewer');
+      const errorContainer = document.getElementById('errorContainer');
+      const downloadBtn = document.getElementById('downloadBtn');
+      
+      // Get optimized resume from localStorage
+      const optimizedResume = localStorage.getItem('optimizedResume');
+      const pdfUrl = localStorage.getItem('pdfUrl');
+      
+      if (optimizedResume && pdfUrl) {
+        // Split the resume into analysis and preview
+        const parts = optimizedResume.split('\nTailored Resume');
+        analysisOutput.textContent = parts[0].trim();
+        
+        // Set PDF preview
+        pdfViewer.src = pdfUrl;
+        
+        // Download functionality
+        downloadBtn.addEventListener('click', () => {
+          window.location.href = pdfUrl;
+        });
+      } else {
+        errorContainer.style.display = 'block';
+        errorContainer.textContent = 'No optimized resume found. Please go back and try again.';
+      }
+    });
+  </script>
+</body>
+</html>

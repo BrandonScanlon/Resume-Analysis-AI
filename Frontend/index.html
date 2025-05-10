@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Analysis AI</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="js/app.js" defer></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold text-center mb-8">Resume Analysis AI</h1>
+        
+        <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-6">
+            <form id="resumeForm" class="space-y-6">
+                <div>
+                    <label for="resumeUpload" class="block text-sm font-medium text-gray-700 mb-2">
+                        Upload Resume (PDF or DOCX)
+                    </label>
+                    <input type="file" id="resumeUpload" accept=".pdf,.docx" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <p id="selectedFile" class="mt-2 text-sm text-gray-500"></p>
+                </div>
+
+                <div>
+                    <label for="jobDescription" class="block text-sm font-medium text-gray-700 mb-2">
+                        Job Description
+                    </label>
+                    <textarea id="jobDescription" rows="6" 
+                              class="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                              placeholder="Paste the job description here..."></textarea>
+                </div>
+
+                <div id="errorMessage" class="hidden text-red-600 text-sm"></div>
+
+                <button type="submit" 
+                        class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2">
+                    Analyze Resume
+                </button>
+            </form>
+
+            <div id="loading" class="hidden mt-8 text-center">
+                <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-blue-600 border-t-transparent"></div>
+                <p class="mt-2 text-gray-600">Analyzing your resume...</p>
+            </div>
+
+            <div id="results" class="hidden mt-8">
+                <div id="analysis-results" class="space-y-8"></div>
+            </div>
+        </div>
+    </div>
+    <!-- Attribution -->
+    <footer class="text-center text-sm text-gray-500 mt-8">
+        <a href="https://www.flaticon.com/free-icons/generator" title="generator icons" class="hover:text-gray-700">
+            Generator icons created by Reddie - Flaticon
+        </a>
+    </footer>
+</body>
+</html> 
