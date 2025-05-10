@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try {
             // console.log('Sending request to server...');
-            const response = await fetch('http://localhost:8000/api/enhance-resume', {
+            const response = await fetch('http://0.0.0.0:7860/api/enhance-resume', {
                 method: 'POST',
                 body: formData,
                 headers: {
